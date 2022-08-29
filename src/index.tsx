@@ -5,7 +5,7 @@ import { createGlobalStyle, ThemeProvider } from "styled-components";
 import App from "./App";
 import { darkTheme } from "./theme";
 const GlobalStyle = createGlobalStyle`
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,500;1,700&family=Source+Sans+Pro:wght@300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -49,8 +49,19 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
-*{
+* {
   box-sizing: border-box;
+}
+body {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  background-color:${(props) => props.theme.bgColor};
+  color:black;
+  line-height: 1.2;
+}
+a {
+  text-decoration:none;
+  color:inherit;
 }
 `;
 const root = ReactDOM.createRoot(
