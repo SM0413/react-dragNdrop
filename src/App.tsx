@@ -7,13 +7,29 @@ function App() {
     <DragDropContext onDragEnd={onDragEnd}>
       <div>
         <Droppable droppableId="one">
-          {() => (
-            <ul>
+          {(magic) => (
+            <ul ref={magic.innerRef} {...magic.droppableProps}>
               <Draggable draggableId="first" index={0}>
-                {() => <li>One</li>}
+                {(magic) => (
+                  <li ref={magic.innerRef} {...magic.draggableProps}>
+                    {" "}
+                    <span {...magic.dragHandleProps}>
+                      이곳을 클릭하여 움직일 수 있음
+                    </span>
+                    One
+                  </li>
+                )}
               </Draggable>
               <Draggable draggableId="second" index={1}>
-                {() => <li>Two</li>}
+                {(magic) => (
+                  <li
+                    ref={magic.innerRef}
+                    {...magic.draggableProps}
+                    {...magic.dragHandleProps}
+                  >
+                    Two
+                  </li>
+                )}
               </Draggable>
             </ul>
           )}
