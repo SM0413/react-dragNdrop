@@ -10,6 +10,13 @@ const Wrapper = styled.div`
   min-height: 200px;
 `;
 
+const Title = styled.h1`
+  display: flex;
+  font-weight: bolder;
+  align-items: center;
+  justify-content: center;
+`;
+
 interface IBoardProps {
   toDos: string[];
   boardId: string;
@@ -19,6 +26,7 @@ export function Board({ toDos, boardId }: IBoardProps) {
     <Droppable droppableId={boardId}>
       {(magic) => (
         <Wrapper ref={magic.innerRef} {...magic.droppableProps}>
+          <Title>{boardId.toUpperCase()}</Title>
           {toDos.map((toDo, index) => (
             <DragabbleCard key={toDo} index={index} toDo={toDo} />
           ))}
