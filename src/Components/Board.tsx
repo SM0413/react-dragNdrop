@@ -23,16 +23,24 @@ interface IBoardProps {
 }
 export function Board({ toDos, boardId }: IBoardProps) {
   return (
-    <Droppable droppableId={boardId}>
-      {(magic) => (
-        <Wrapper ref={magic.innerRef} {...magic.droppableProps}>
-          <Title>{boardId.toUpperCase()}</Title>
-          {toDos.map((toDo, index) => (
-            <DragabbleCard key={toDo} index={index} toDo={toDo} />
-          ))}
-          {magic.placeholder}
-        </Wrapper>
-      )}
-    </Droppable>
+    <Wrapper>
+      <Title>{boardId.toUpperCase()}</Title>
+      <Droppable droppableId={boardId}>
+        {(magic) => (
+          <div ref={magic.innerRef} {...magic.droppableProps}>
+            <div
+              style={{ backgroundColor: "red" }}
+              ref={magic.innerRef}
+              {...magic.droppableProps}
+            >
+              {toDos.map((toDo, index) => (
+                <DragabbleCard key={toDo} index={index} toDo={toDo} />
+              ))}
+              {magic.placeholder}
+            </div>
+          </div>
+        )}
+      </Droppable>
+    </Wrapper>
   );
 }
